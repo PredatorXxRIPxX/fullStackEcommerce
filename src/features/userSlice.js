@@ -1,10 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    id:"",
-    username:"",
-    email:"",
-    orders:[],
+    
 }
 
 export const userSlice = createSlice({
@@ -12,8 +9,11 @@ export const userSlice = createSlice({
     initialState,
     reducers:{
         setUserRedux:{
-            reducer(actions){
-                return actions.payload
+            reducer(state,actions){
+                state["id"] = actions.payload.id
+                state["email"] = actions.payload.email
+                state["username"] = actions.payload.userName
+                state["orders"] = []
             },
 
             prepare(id,email,userName){
@@ -24,13 +24,43 @@ export const userSlice = createSlice({
                         userName:userName,
                         orders:[]
                     }
+                
+            }
+        },
+        addOrders:{
+            reducer(state,actions){
+                state.orders.push(actions.payload)
+            },
+            prepare(id,name ,price, quantite){
+                return {
+                    payload:{
+                        id:id,
+                        name:name,
+                        price:price,
+                        quantite:quantite,
+                    }
                 }
             }
         },
+        deleteOrder:{
+
+            reducer(state,actions){
+                state.orders.filter((Element)=>Element.id!=actions.payload.id)
+            },
+
+            prepare(id){
+                return {
+                    payload:{
+                        id:id
+                    }
+                }
+            }
+        }
+        }
     }
-})
+});
 
 
 export const getUser = (state) => state.userSlice
-export const {setUserRedux} = userSlice.actions;
+export const {setUserRedux,addOrders,deleteOrder} = userSlice.actions;
 export default userSlice.reducer

@@ -25,14 +25,17 @@ export default function Singin(){
     }
 
     return(
-        <motion.div>
+        <motion.div className="bg-gray-200 w-fit rounded-md flex flex-col items-center p-4 shadow-xl drop-shadow-sm shadow-gray-500">
+            <div>
+            
+            </div>
             <h1>userName</h1>
-            <input type="text" onChange={(e)=>setUsername(e.target.value)} value={username}/>
+            <input className="p-2 m-1 rounded-sm" type="text" onChange={(e)=>setUsername(e.target.value)} value={username}/>
             <h1>email</h1>
-            <input type="text" onChange={(e)=>setEmail(e.target.value)} value={email} />
+            <input className="p-2 m-1 rounded-sm" type="text" onChange={(e)=>setEmail(e.target.value)} value={email} />
             <h1>password</h1>
-            <input type="password" onChange={(e)=>setPassword(e.target.value)} value={password} />
-            <motion.button onClick={createAccount}>
+            <input className="p-2 m-1 rounded-sm" type="password" onChange={(e)=>setPassword(e.target.value)} value={password} />
+            <motion.button className="rounded-md text-white bg-violet-800 p-2 m-2" onClick={createAccount}>
                 sing in
             </motion.button>
             <p>already have an account ? <Link to={"/"}><span className="text-violet-800">Log in</span></Link></p>

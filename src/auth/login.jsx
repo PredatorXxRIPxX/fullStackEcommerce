@@ -25,22 +25,25 @@ export default function Login(){
             const username_user = tmp_information.name
             console.log(id_User)
             console.log(username_user)
-            //useDispatch(setUserRedux(id_User,email,username_user))
-            
+            dispatch(setUserRedux(id_User,email,username_user));
+            console.log()
             setEmail("")
             setPassword("")
             console.log("succes")
-            navigator("/home")
+            navigator("/home/products")
         }
     }
 
     return (
-        <motion.div className="bg-violet-500">
-            <h1>Email</h1>
-            <input type="text" onChange={(e)=>setEmail(e.target.value)} value={email}/>
-            <h1>Password</h1>
-            <input type="password" onChange={(e)=>setPassword(e.target.value)} value={password}/>
-            <motion.button onClick={loginAccount}>
+        <motion.div className="bg-gray-200 w-fit rounded-md flex flex-col items-center p-4 shadow-xl drop-shadow-sm shadow-gray-500">
+            <div>
+            
+            </div>
+            <h1 className="font-bold">Email</h1>
+            <input className="p-2 m-1 rounded-sm" type="text" onChange={(e)=>setEmail(e.target.value)} value={email}/>
+            <h1 className="font-bold">Password</h1>
+            <input className="p-2 m-1 rounded-sm" type="password" onChange={(e)=>setPassword(e.target.value)} value={password}/>
+            <motion.button onClick={loginAccount} className="rounded-md text-white bg-violet-800 p-2 m-2">
                 log in
             </motion.button>
             <p>Don't have an Account <Link to={"/signin"}><span className="text-violet-800">signIn</span></Link></p>
