@@ -3,7 +3,7 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import "../style/global.css"
 import { creatingAccount } from "../app/api"
-
+import { Input } from "@chakra-ui/react"
 
 export default function Singin(){
     const navigate = useNavigate()
@@ -30,11 +30,11 @@ export default function Singin(){
             
             </div>
             <h1>userName</h1>
-            <input className="p-2 m-1 rounded-sm" type="text" onChange={(e)=>setUsername(e.target.value)} value={username}/>
+            <Input type="flushed " onChange={(e)=>setUsername(e.target.value)} value={username}/>
             <h1>email</h1>
-            <input className="p-2 m-1 rounded-sm" type="text" onChange={(e)=>setEmail(e.target.value)} value={email} />
+            <Input type="flushed" onChange={(e)=>setEmail(e.target.value)} value={email}/>
             <h1>password</h1>
-            <input className="p-2 m-1 rounded-sm" type="password" onChange={(e)=>setPassword(e.target.value)} value={password} />
+            <Input type="password" onChange={(e)=>setPassword(e.target.value)} value={password} />
             <motion.button className="rounded-md text-white bg-violet-800 p-2 m-2" onClick={createAccount}>
                 sing in
             </motion.button>

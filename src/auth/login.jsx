@@ -5,8 +5,8 @@ import "../style/global.css"
 import {useDispatch } from "react-redux";
 import { connectAccount, getAccountInfo } from "../app/api";
 import { setUserRedux } from "../features/userSlice";
-import { account } from "../app/config";
 import { useNavigate } from "react-router-dom";
+import { Input } from "@chakra-ui/react";
 
 
 export default function Login(){
@@ -39,10 +39,10 @@ export default function Login(){
             <div>
             
             </div>
-            <h1 className="font-bold">Email</h1>
-            <input className="p-2 m-1 rounded-sm" type="text" onChange={(e)=>setEmail(e.target.value)} value={email}/>
-            <h1 className="font-bold">Password</h1>
-            <input className="p-2 m-1 rounded-sm" type="password" onChange={(e)=>setPassword(e.target.value)} value={password}/>
+            <h1 className="font-bold text-left">Email</h1>
+            <Input variant='flushed' onChange={(e)=>setEmail(e.target.value)} value={email}/>
+            <h1 className="font-bold text-left">Password</h1>
+            <Input variant='password' onChange={(e)=>setPassword(e.target.value)} value={password}/>
             <motion.button onClick={loginAccount} className="rounded-md text-white bg-violet-800 p-2 m-2">
                 log in
             </motion.button>
