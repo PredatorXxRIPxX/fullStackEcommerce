@@ -40,7 +40,7 @@ export default function Login(){
             
             </div>
             <h1 className="font-bold text-left">Email</h1>
-            <Input variant='flushed' onChange={(e)=>setEmail(e.target.value)} value={email}/>
+            <Input variant='outlined' onChange={(e)=>setEmail(e.target.value)} value={email}/>
             <h1 className="font-bold text-left">Password</h1>
             <Input variant='password' onChange={(e)=>setPassword(e.target.value)} value={password}/>
             <motion.button onClick={loginAccount} className="rounded-md text-white bg-violet-800 p-2 m-2">
