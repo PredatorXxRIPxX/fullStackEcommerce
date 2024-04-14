@@ -1,4 +1,4 @@
-import { ID } from "appwrite"
+import { ID,Query } from "appwrite"
 import {account,database} from "./config"
 
 export const creatingAccount=async(username,email,password) =>{
@@ -36,6 +36,16 @@ export const connectAccount=async(email,password)=>{
 export const getAccountInfo=async ()=>{
     try {
         var response = await account.get()
+        return response
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+export const connectAdmin=async(email,password)=>{
+    try {
+        var response = await account.createEmailPasswordSession(email,password)
         return response
     } catch (error) {
         console.log(error)

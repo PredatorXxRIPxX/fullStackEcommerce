@@ -1,37 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    auth:false,
-    name:"",
-    email:"",
-    password:"",
-}
+    auth: false,
+    email: "",
+    password: ""
+};
 
 export const adminSlice = createSlice({
-    name:"adminSlice",
+    name: "adminSlice",
     initialState,
-    reducers:{
-        connectAdmin:{
-            reducer(state,actions){
-                state[adminName] = actions.payload.adminName
-                state[email] = actions.payload.email            
-                state[password] = actions.payload.password
-                state[auth] = true
-            },
-            prepare(email,password){
-                return {
-                    payload:{
-                        adminName:"admin",
-                        email:email,
-                        password:password,
-                    }
-                }
-            }
+    reducers: {
+        connectAdmin(state, action) {
+            state.auth = true;
+            state.email = action.payload.email;
+            state.password = action.payload.password;
         }
     }
-})
+});
 
 
-export const getAdmin = (state) => state.adminSlice
-export const {connectAdmin} = adminSlice.actions
-export default adminSlice.reducer
+export const { connectAdmin } = adminSlice.actions;
+export default adminSlice.reducer;

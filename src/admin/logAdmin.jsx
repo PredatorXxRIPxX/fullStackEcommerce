@@ -4,13 +4,22 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 export default function LogAdmin(){
     const [email,setEmail]= useState("")
     const [password,setPassword] = useState("")
+
+    const connectAdmin = async () =>{
+        try {
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
-        <div>
+        <div className="p-4 bg-white shadow-md drop-shadow-md shadow-gray-200 rounded-md ">
             <h2>Email</h2>
-            <Input size={"md"}  onChange={(e)=>setEmail(e.target.value)} value={email}/>
+            <Input size={"md"} onChange={(e)=>setEmail(e.target.value)} value={email}/>
             <h2>Password</h2>
             <Input size={"md"} onChange={(e)=>setPassword(e.target.value)} value={password} />
-            <Button size='md' height='48px' width='200px' border='2px' borderColor='violet.800'>Enter Admin</Button>
+            <Button size='md' color={"white"} backgroundColor={"violet"} height='48px' width='200px' border='none' margin={'2rem 0rem'} onClick={connectAdmin}>Enter Admin</Button>
         </div>
     )
 }
