@@ -8,6 +8,7 @@ export const projectConfiguration = {
     adminCollectectionID:import.meta.env.VITE_APPWRITE_ADMIN_COLLECTION_ID,
     productCollectionId:import.meta.env.VITE_APPWRITE_PRODUCTS_COLLECTIONS_ID,
     transactionCollectionID: import.meta.env.VITE_APPWRITE_TRANSATION_COLLECTION_ID ,
+    usersCollectionID:import.meta.env.VITE_APPWRITE_USERS_ID,
 }
 
 

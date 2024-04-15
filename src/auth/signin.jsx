@@ -12,7 +12,7 @@ export default function Singin(){
     const[password,setPassword] = useState("")
 
     async function createAccount () {
-        var response = await createAccounts(username,email,password);
+        var response = await creatingAccount(username,email,password);
         if(response==null){
             alert("une alert c'est produit")
         }else{
