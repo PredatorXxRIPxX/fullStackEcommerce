@@ -7,7 +7,8 @@ export default function LogAdmin(){
 
     const connectAdmin = async () =>{
         try {
-            
+            const response = await connectAdmin(email,password)
+            console.log(response)
         } catch (error) {
             console.log(error)
         }

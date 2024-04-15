@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import {motion} from "framer-motion"
 import { Link } from "react-router-dom";
+import { logAccount } from "../app/api";
 import "../style/global.css"
 import {useDispatch } from "react-redux";
-import { connectAccount, getAccountInfo } from "../app/api";
+import { getAccountInfo } from "../app/api";
 import { setUserRedux } from "../features/userSlice";
 import { useNavigate } from "react-router-dom";
 import { Input } from "@chakra-ui/react";
@@ -16,20 +17,16 @@ export default function Login(){
     const [password,setPassword] = useState("")
 
     async function loginAccount(){
-        var response = await connectAccount(email,password);
+        var response = await logAccount(email,password);
         if(response == null){
             alert("an error has occured")
         }else{
             const tmp_information = await getAccountInfo()
             const id_User = tmp_information.$id;
             const username_user = tmp_information.name
-            console.log(id_User)
-            console.log(username_user)
             dispatch(setUserRedux(id_User,email,username_user));
-            console.log()
             setEmail("")
             setPassword("")
-            console.log("succes")
             navigator("/home/products")
         }
     }

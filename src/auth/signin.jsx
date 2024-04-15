@@ -2,7 +2,7 @@ import {motion} from "framer-motion"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import "../style/global.css"
-import { creatingAccount } from "../app/api"
+import { createAccounts } from "../app/api"
 import { Input } from "@chakra-ui/react"
 
 export default function Singin(){
@@ -12,7 +12,7 @@ export default function Singin(){
     const[password,setPassword] = useState("")
 
     async function createAccount () {
-        var response = await creatingAccount(username,email,password);
+        var response = await createAccounts(username,email,password);
         if(response==null){
             alert("une alert c'est produit")
         }else{
