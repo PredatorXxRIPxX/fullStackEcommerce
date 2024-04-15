@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Input } from '@chakra-ui/react'
+import { connectAdmin } from "../app/api";
 import { Button, ButtonGroup } from '@chakra-ui/react'
 export default function LogAdmin(){
     const [email,setEmail]= useState("")
@@ -7,7 +8,8 @@ export default function LogAdmin(){
 
     const connectAdmin = async () =>{
         try {
-            
+            var response = await connectAdmin(email,password)
+            console.log(response)
         } catch (error) {
             console.log(error)
         }
