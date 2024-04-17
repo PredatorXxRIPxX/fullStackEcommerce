@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { addProduct } from "../app/api";
 
 export default function Dashboard(){
 
@@ -9,26 +10,24 @@ export default function Dashboard(){
 
     const sendDB = async()=>{
         if(pic!=null){
-            
+            addProduct(productName,productPrice,productDescription,pic);
+            setProductName("")
+            setPic("")
+            setProductPrice("")
+            setProductDescription("")
+        }else{
+            console.log("we didnt find any image");
         }
     }
 
     return (
         <>
-            <nav className=" bg-violet-500 text-white font-bold flex justify-between p-2 items-center">
-                <h1 className=" text-2xl">ShoopIo</h1>
-                <ul className="flex items-center justify-normal p-2">
-                    <li className="p-2 m-4">Products</li>
-                    <li className="p-2 m-4">Orders</li>
-                    <li className="p-2 m-4">Account</li>
-                </ul>
-            </nav>
-            <div>
+            <div className="h-full w-full flex flex-col items-center p-4 m-4 ">
                 <input type="text" placeholder="product name" onChange={(e)=>setProductName(e.target.value)} value={productName}/>
                 <input type="text" placeholder="product Price" onChange={(e)=>setProductPrice(e.target.value)} value={productPrice}/>
                 <textarea placeholder="description" onChange={(e)=>setProductDescription(e.target.value)} value={productDescription}/>
                 <input type="file" placeholder="product pictures" required  onChange={(e)=>setPic(e.target.files[0])}/>
-                <button onClick={sendDB}>Add product</button>
+                <button className=" bg-red-600 text-white font-bold" onClick={sendDB}>Add product</button>
             </div>
         </>
     )

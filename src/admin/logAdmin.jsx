@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Input } from '@chakra-ui/react'
 import { connectAdmin } from "../app/api";
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 export default function LogAdmin(){
     const [email,setEmail]= useState("")
     const [password,setPassword] = useState("")
 
-    const connectAdmin = async () =>{
+    const connectAdmins = async () =>{
         try {
             
         } catch (error) {
@@ -20,7 +20,7 @@ export default function LogAdmin(){
             <Input size={"md"} onChange={(e)=>setEmail(e.target.value)} value={email}/>
             <h2>Password</h2>
             <Input size={"md"} onChange={(e)=>setPassword(e.target.value)} value={password} />
-            <Button size='md' color={"white"} backgroundColor={"violet"} height='48px' width='200px' border='none' margin={'2rem 0rem'} onClick={connectAdmin}>Enter Admin</Button>
+            <Button size='md' color={"white"} backgroundColor={"violet"} height='48px' width='200px' border='none' margin={'2rem 0rem'} onClick={connectAdmins}>Enter Admin</Button>
         </div>
     )
 }
