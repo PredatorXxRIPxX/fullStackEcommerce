@@ -18,13 +18,13 @@ function App() {
           <Route path="/login" element={<Login />}/>
           <Route path="/signin" element={<Singin />}/>
           <Route path="/admin" element={<Admin />}/>
+          <Route path="/admin" element={<Admin />}/>
         </Route>
         <Route path="/home" element={<Home />}>
           <Route path="/home/settings" element={<Settings />}/>
           <Route path="/home/products" element={<Products/>}/>
           <Route path="/home/orders" element={<Orders />}/>
         </Route>
-        <Route path="/admin" element={<Admin />}/>
       </Routes>
     </>
   )

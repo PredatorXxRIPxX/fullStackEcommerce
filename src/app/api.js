@@ -17,6 +17,7 @@ export const creatingAccount=async(username,email,password) =>{
                 user_password:password,
                 user_email:email
             })
+            console.log(response)
             return response
         }else{
             alert("some field are missing")
@@ -77,7 +78,7 @@ export const addProduct=async (name,price,description,image)=>{
             price_product:price,
             description:description,
         })
-        return response
+        console.log(response);
     } catch (error) {
         console.log(error)
     }
