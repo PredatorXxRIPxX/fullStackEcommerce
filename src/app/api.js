@@ -89,8 +89,9 @@ export const addProduct=async (name,price,description,image)=>{
 
 export const getProductImage=async (id)=>{
     try {
-        var response = await storage.getFile(projectConfiguration.databaseID,id)
-        console.log(response)
+        var result = storage.getFilePreview(projectConfiguration.storageID,id)
+        console.log(result)
+        return result.href
     } catch (error) {
         console.log(error)
     }
@@ -104,6 +105,7 @@ export const getProduct = async () => {
             projectConfiguration.productCollectionId,
             
         );
+        
         return response
     } catch (error) {
         console.error("Error fetching products:", error);
