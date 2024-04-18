@@ -2,7 +2,7 @@ import {motion} from "framer-motion"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import "../style/global.css"
-import { createAccounts } from "../app/api"
+import { creatingAccount } from "../app/api"
 import { Input } from "@chakra-ui/react"
 
 export default function Singin(){
