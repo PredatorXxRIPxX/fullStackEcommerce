@@ -1,29 +1,23 @@
 import "../style/global.css"
-import React from "react"
-import { Link, Route, Routes } from "react-router-dom"
-import Products from "./Products"
-import Settings from "./Settings"
-import Orders from "./Orders"
+import React, { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import { getProduct } from "../app/api"
 
-
-export default function Home(){
-
-
+export default function Home() {
+    console.log(getProduct(10))
     return (
         <>
-            <nav className="flex items-center bg-violet-800 text-white font-bold justify-between p-4 w-full h-6">
-                <h1>Shooper</h1>
-                <ul>
-                    <li><Link to={"/home/products"}>Products</Link></li>
-                    <li><Link to={"/home/orders"}>Orders</Link></li>
-                    <li><Link to={"/home/settings"}>Settings</Link></li>
+            <nav className="flex items-center bg-violet-800 text-white font-bold justify-between p-4">
+                <h1 className="font-bold text-2xl">Shooper</h1>
+                <ul className="list-none flex items-center p-2">
+                    <li className="text-white font-bold text-lg p-2"><Link to="/home/products">Products</Link></li>
+                    <li className="text-white font-bold text-lg p-2"><Link to="/home/products">Orders</Link></li>
+                    <li className="text-white font-bold text-lg p-2"><Link to="/home/products">Settings</Link></li>                    
                 </ul>
             </nav>
-            <Routes>
-                <Route path="/home/products" element={<Products />}/>
-                <Route path="/home/orders" element={<Orders />}/>
-                <Route path="/home/settings" element={<Settings />}/>
-            </Routes>
+            <div className="bg-[#222] text-white font-bold h-screen w-full grid grid-cols-4 gap-2">
+                <p>hello</p>
+            </div>
         </>
     )
 }
