@@ -23,13 +23,9 @@ export default function Login(){
             const tmp_information = await getAccountInfo()
             const id_User = tmp_information.$id;
             const username_user = tmp_information.name
-            console.log(id_User)
-            console.log(username_user)
             dispatch(setUserRedux(id_User,email,username_user));
-            console.log()
             setEmail("")
             setPassword("")
-            console.log("succes")
             navigator("/home/products")
         }
     }

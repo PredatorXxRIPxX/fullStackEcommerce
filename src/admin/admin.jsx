@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import LogAdmin from "./logAdmin";
 import { selectAuth } from "../features/adminSlice";
 import Dashboard from "./dashboard";
 import "../style/global.css"
@@ -10,6 +9,8 @@ import OrdersAdmin from "./ordersAdmin";
 import ProductAdmin from "./productAdmin";
 
 export default function Admin() {
+
+    const user = useSelector()
 
     return (
         <>

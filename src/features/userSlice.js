@@ -55,6 +55,18 @@ export const userSlice = createSlice({
                     }
                 }
             }
+        },
+        setAuth:{
+            reducer(state,actions){
+                state["auth"] = actions.payload.auth
+            },
+            prepare(authentification){
+                return {
+                    payload:{
+                        auth:authentification,
+                    }
+                }
+            }
         }
         }
     }
@@ -62,5 +74,5 @@ export const userSlice = createSlice({
 
 
 export const getUser = (state) => state.userSlice
-export const {setUserRedux,addOrders,deleteOrder} = userSlice.actions;
+export const {setUserRedux,addOrders,deleteOrder,setAuth} = userSlice.actions;
 export default userSlice.reducer
