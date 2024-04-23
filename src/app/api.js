@@ -69,7 +69,6 @@ export const addProduct=async (name,price,description,image)=>{
         var result = await uploadPic(image);
 
         var response = await database.createDocument(projectConfiguration.databaseID,projectConfiguration.productCollectionId,ID.unique(),{
-            id_produit:ID.unique(),
             name_product:name,
             price_product:price,
             description:description,
@@ -85,7 +84,7 @@ export const getProductImage=async (id)=>{
     try {
         var result = storage.getFilePreview(projectConfiguration.storageID,id)
         console.log(result)
-        return result.href
+        return result
     } catch (error) {
         console.log(error)
     }

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../style/global.css"
 import { getProduct, getProductImage } from "../app/api";
 import ProductCard from "../components/productCard/productCard";
-import { ID } from "appwrite";
 
 export default function Products(){
 
@@ -24,8 +23,8 @@ export default function Products(){
         <div className="text-white bg-[#333] w-full h-full p-4 grid grid-cols-3 gap-3 items-center">
             {listproduct.map((element)=>{
                 return (
-                    <div key={ID.unique()}>
-                        <ProductCard imageLink={getProductImage(element.image)} heading={element.name_product} price={element.price_product}/>
+                    <div>
+                        <ProductCard id={element.$id} imageLink={getProductImage(element.image)} heading={element.name_product} price={element.price_product}/>
                     </div>
                 )
             })}

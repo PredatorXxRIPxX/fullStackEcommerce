@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    
+    id:null,
+    email:null,
+    username:null,
+    orders:[],
 }
 
 export const userSlice = createSlice({
@@ -55,6 +58,18 @@ export const userSlice = createSlice({
                     }
                 }
             }
+        },
+        setAuth:{
+            reducer(state,actions){
+                state["auth"] = actions.payload.auth
+            },
+            prepare(authState){
+                return {
+                    payload:{
+                        auth:authState,
+                    }
+                }
+            }
         }
         }
     }
@@ -62,5 +77,5 @@ export const userSlice = createSlice({
 
 
 export const getUser = (state) => state.userSlice
-export const {setUserRedux,addOrders,deleteOrder} = userSlice.actions;
+export const {setUserRedux,addOrders,deleteOrder,setAuth} = userSlice.actions;
 export default userSlice.reducer
