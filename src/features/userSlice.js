@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const userSlice = createSlice({
-  name: "users", // Corrected to "userSlice" for consistency
+  name: "userSlice", 
   initialState: {
     id: null,
     email: null,
@@ -30,6 +30,6 @@ export const userSlice = createSlice({
 });
 
 export const { setUserRedux, addOrders, deleteOrder, setAuth } = userSlice.actions;
-export const getUser = (state) => state.users; // Corrected to "userSlice"
-export const UserOrders = (state) => state.users.orders; // Corrected to "userSlice"
+export const getUser = (state) => state.userSlice; // Corrected to "userSlice"
+export const UserOrders = (state) => state.userSlice.orders; // Corrected to "userSlice"
 export default userSlice.reducer;
