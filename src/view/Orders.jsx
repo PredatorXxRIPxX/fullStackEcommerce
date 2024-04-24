@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import {UsersOrder} from "../features/userSlice"
+import { UserOrders } from "../features/userSlice";
+
 
 export default function Orders() {
-  const orders = useSelector(UsersOrder);
+  const orders = useSelector(UserOrders)
 
   return (
     <div className="w-full h-full bg-[#222] text-white font-bold p-4">
