@@ -23,7 +23,11 @@ export default function Login(){
             const tmp_information = await getAccountInfo()
             const id_User = tmp_information.$id;
             const username_user = tmp_information.name
-            dispatch(setUserRedux(id_User,email,username_user));
+            dispatch(setUserRedux({
+                id:id_User,
+                email:email,
+                username:username_user
+            }))
             setEmail("")
             setPassword("")
             navigator("/home/products")
@@ -31,7 +35,8 @@ export default function Login(){
     }
 
     return (
-        <motion.div className="bg-gray-200 w-fit rounded-md flex flex-col items-center p-4 shadow-xl drop-shadow-sm shadow-gray-500">
+        <motion.div className="w-full h-full flex items-center justify-center">
+        <div className="bg-gray-200 w-fit rounded-md flex flex-col items-center p-4 shadow-xl drop-shadow-sm shadow-gray-500">
             <div>
             
             </div>
@@ -43,6 +48,7 @@ export default function Login(){
                 log in
             </motion.button>
             <p>Don't have an Account <Link to={"/signin"}><span className="text-violet-800">signIn</span></Link></p>
+        </div>
         </motion.div>
     )
 }

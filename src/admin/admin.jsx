@@ -10,7 +10,6 @@ import ProductAdmin from "./productAdmin";
 
 export default function Admin() {
 
-    const user = useSelector()
 
     return (
         <>
