@@ -1,21 +1,9 @@
 import React, { useState } from "react";
 import { Card ,Image ,Stack,Heading,CardBody,Text,CardFooter,Button} from "@chakra-ui/react";
-import { getProduct, getProductImage } from "../../app/api";
 
 
 export default function OrdersElement (props){
-    let [quantite,setQuantite] = useState(1);
-    const handlequantite = (operation) =>{
-        if(operation=="-"){
-            if(quantite==1){
-                setQuantite(1)
-            }else{
-                setQuantite(quantite--);
-            }
-        }else{
-            setQuantite(quantite++)
-        }
-    }
+    const [quantite,setQuantite] = useState(1);
     return (
         <div className="m-4">
                 <Card
@@ -40,13 +28,13 @@ export default function OrdersElement (props){
         </CardBody>
 
         <CardFooter>
-        <Button variant='solid' colorScheme="blue" onClick={()=>handlequantite("-")}>
+        <Button variant='solid' colorScheme="blue" onClick={()=>{quantite>=1?setQuantite(quantite--):setQuantite(1)}}>
             -
         </Button>
         <Text margin={"1.25rem"}>
             {quantite}
         </Text>
-        <Button variant='solid' colorScheme='blue' onClick={()=>handlequantite("+")}>
+        <Button variant='solid' colorScheme='blue' onClick={()=>setQuantite(quantite++)}>
             +
         </Button>
         </CardFooter>

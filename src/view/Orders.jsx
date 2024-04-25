@@ -1,38 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import OrdersElement from "../components/ordersElement/ordersElement";
-import { useState } from "react";
+import { getProduct, getProductImage } from "../app/api"; // Import your API functions
+import { Button } from "@chakra-ui/react";
 
 export default function Orders() {
+  const someOrders = useSelector((state) => state.user.orders);
+  const [orderDetails, setOrderDetails] = useState([]);
 
-  const someOrders = useSelector((state)=>state.user.orders)
-  const [image,setImage] = useState("")
-  const [discription,setDiscription] =useState("")
-  
-  async function fetchData(id){
-    try {
-      var response = await getProduct();
-      var element = response.documents.filter((ele)=>ele.$id==id);
-      setDiscription(element.discription)
-      setImage(await getProductImage(element.image))
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const details = await Promise.all(
+          someOrders.map(async (order) => {
+            const response = await getProduct();
+            const element = response.documents.find((ele) => ele.$id === order.id);
+            const discription = element ? element.discription : "";
+            const image = element ? await getProductImage(element.image) : "";
+            return { id: order.id, name: order.name, image, discription };
+          })
+        );
+        setOrderDetails(details);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, [someOrders]);
 
   return (
     <div className="w-full h-full bg-[#222] text-white font-bold p-4">
-      {someOrders.length === 0 ? (
-        <h1>Loading Orders...</h1> // Display loading message if no orders
+      {orderDetails.length === 0 ? (
+        <h1>Loading Orders...</h1>
       ) : (
         <>
           <h1>Your Orders</h1>
           <ul>
-            {someOrders.map(async(order) => (
-              await fetchData(order.id)
-              (<OrdersElement id={order.id} name={order.name} image={image} discription={discription}/>) // Replace with your order data structure
+            {orderDetails.map((order) => (
+              <OrdersElement
+                key={order.id}
+                id={order.id}
+                name={order.name}
+                image={order.image}
+                discription={order.discription}
+              />
             ))}
           </ul>
+          <div className="w-full h-fit flex flex-row-reverse p-4">
+            <Button zIndex={"2"} color={"white"} bgColor={"violet"}>
+              Checkout
+            </Button>
+          </div>
         </>
       )}
     </div>
