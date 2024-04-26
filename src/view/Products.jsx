@@ -2,9 +2,15 @@ import React, { useEffect, useState } from "react";
 import "../style/global.css"
 import { getProduct, getProductImage } from "../app/api";
 import ProductCard from "../components/productCard/productCard";
+<<<<<<< HEAD
+=======
+import { ID } from "appwrite";
+import { useSelector } from "react-redux";
+import { getUser } from "../features/userSlice";
+>>>>>>> update
 
 export default function Products(){
-
+    const user = useSelector(getUser)
     const [listproduct,setListProduct] = useState([])
     const fetchData = async () =>{
         try {
@@ -17,13 +23,18 @@ export default function Products(){
 
     useEffect(()=>{
         fetchData()
+        
     },[])
 
     return (
-        <div className="text-white bg-[#333] w-full h-full p-4 grid grid-cols-3 gap-3 items-center">
+        <div className="text-white bg-[#333] h-full w-full p-4 grid grid-cols-3 gap-3 ">
             {listproduct.map((element)=>{
                 return (
+<<<<<<< HEAD
                     <div>
+=======
+                    <div key={ID.unique()}>
+>>>>>>> update
                         <ProductCard id={element.$id} imageLink={getProductImage(element.image)} heading={element.name_product} price={element.price_product}/>
                     </div>
                 )

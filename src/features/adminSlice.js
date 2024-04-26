@@ -12,9 +12,7 @@ export const adminSlice = createSlice({
     reducers: {
         connectAdmin: {
             reducer(state, action) {
-                state.auth = action.payload.auth;
-                state.email = action.payload.email;
-                state.password = action.payload.password;
+                state = action.payload
             },
             prepare(email, password) {
                 return {
@@ -32,4 +30,5 @@ export const adminSlice = createSlice({
 export const selectAuth = state => state.adminSlice.auth;
 
 export const { connectAdmin } = adminSlice.actions;
+export const AuthAdmin = (state)=>state.adminSlice.auth //adminslice is the name of the AdminSlice
 export default adminSlice.reducer;

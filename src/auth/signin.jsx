@@ -27,7 +27,7 @@ export default function Singin(){
     return(
         <div className="flex flex-col items-center justify-center  h-screen w-screen">
 
-        <motion.div className="bg-gray-200 w-fit rounded-md flex flex-col  p-4 shadow-xl drop-shadow-sm shadow-gray-500">
+        <motion.div className="bg-gray-100 w-fit rounded-md flex flex-col  p-4 shadow-xl drop-shadow-sm shadow-gray-500">
             <h1>userName</h1>
             <Input type="outlined " onChange={(e)=>setUsername(e.target.value)} value={username}/>
             <h1>email</h1>

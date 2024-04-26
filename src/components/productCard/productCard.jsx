@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Divider, ButtonGroup, Button, Image, Text } from '@chakra-ui/react'
 import { useDispatch, useSelector } from "react-redux";
 import { addOrders, getUser } from "../../features/userSlice";
@@ -6,6 +7,27 @@ import { addOrders, getUser } from "../../features/userSlice";
 export default function ProductCard(props) {
  
 
+=======
+import { Card, CardBody, CardFooter,Stack,Heading,Divider,ButtonGroup,Button,Image,Text } from '@chakra-ui/react'
+import { addOrders } from "../../features/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../features/userSlice";
+
+export default function ProductCard(props){
+    const dispatch = useDispatch();
+    const user = useSelector(getUser);
+
+    const setBuy=(name,price,id)=>{
+        console.log(name,price,id)
+    }
+
+    const setOrder=(name,price,id)=>{   
+        dispatch(addOrders({name:name,price:price,id:id}));
+        console.log("done")
+        console.log(user)
+    }
+
+>>>>>>> update
     return (
         <Card maxW='sm'>
             <CardBody>
@@ -22,6 +44,7 @@ export default function ProductCard(props) {
             </CardBody>
             <Divider />
             <CardFooter>
+<<<<<<< HEAD
                 <ButtonGroup spacing='2'>
                     <Button variant='solid' colorScheme='blue'>
                         Buy now
@@ -38,3 +61,26 @@ export default function ProductCard(props) {
         </Card>
     );
 }
+=======
+            <ButtonGroup spacing='2'>
+            <div onClick={()=>{
+                setBuy(props.heading,props.price,props.id);
+            }}>
+                <Button variant='solid' colorScheme='blue'>
+                    Buy now
+                </Button>
+            </div>
+            <div onClick={()=>{
+                setOrder(props.heading,props.price,props.id)
+            }}>
+                <Button variant='ghost' colorScheme='blue'>
+                    Add to cart
+                </Button>
+            </div>
+        </ButtonGroup>
+  </CardFooter>
+</Card>
+        </>
+    )
+}
+>>>>>>> update

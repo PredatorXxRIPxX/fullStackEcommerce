@@ -6,7 +6,7 @@ import Admin from "../admin/admin";
 import Dashboard from "../admin/dashboard";
 export default function Auth(){
     return (
-        <div className="flex flex-col items-center  h-screen bg-[#222]">
+        <div className="flex flex-col items-center h-screen bg-[#222]">
             <Routes>
                 <Route path="/" element={<Login />}/>
                 <Route path="/signin" element={<Singin />}/>
